@@ -5,9 +5,9 @@ class Solution {
         int count =0;
         Arrays.fill(arr,1);
         for(int i =2;i<=n/i;i++){
-            for(int j = i*i;j<n;j+=i){
+           if(arr[i]==1){ for(int j = i*i;j<n;j+=i){
                 if(j%i==0) arr[j]=0;
-            }
+            }}
         }
         for(int i =2;i<n;i++){
             if(arr[i]==1) count++;
