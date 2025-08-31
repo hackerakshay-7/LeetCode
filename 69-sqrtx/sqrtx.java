@@ -1,16 +1,12 @@
 class Solution {
-    public int mySqrt(float x,float m, float step){
-        float square =m*m;
-        if(square== x) return (int)m;
-        if(square>x){
-            if(step>0.01){return mySqrt(x,m-step,step/10);}
-            else{ return (int)(m-step);}
-        }
-        else{return mySqrt(x,m+step,step);}
-    }
     public int mySqrt(int x) {
-      int o=mySqrt(x,0,1);
-       if(o*o>x) return o-1;
-       return o;
-       }
+        int f=0,e=x;
+        while(f<=e){
+             int mid = f +(e-f)/2;
+             long sqr=(long)mid*mid;
+            if(sqr==x) return mid;
+           else if(sqr>x){ e=mid-1;}
+           else{ f=mid+1;}
+        }
+  return e;  }
 }
