@@ -5,7 +5,7 @@ class Solution {
             for(int b : a){
                 if(b<0) {c++; b=-b;}
                 sum += b;
-                min=Math.min(Math.abs(b),min);
+                if(min>b) min =b;
             }}
             
             return c%2==0 ? sum:sum-(2*min);
