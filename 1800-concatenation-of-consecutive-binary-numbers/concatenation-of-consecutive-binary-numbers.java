@@ -7,7 +7,7 @@ class Solution {
             if ((i & (i - 1)) == 0) {
                 shift++;
             }
-            ans = ((ans << shift) % mod + i) % mod;
+            ans = ((ans * (int)Math.pow(2,shift)) % mod + i) % mod;
         }
 
         return (int)ans;
