@@ -1,8 +1,9 @@
 class Solution {
-    void backtrack(String s,List<String> ans , String digits , int i , HashMap<Character,String> map ){
-        if(i==digits.length()) {ans.add(s); return;}
+    void backtrack(StringBuilder s,List<String> ans , String digits , int i , HashMap<Character,String> map ){
+        if(i==digits.length()) {ans.add(s.toString()); return;}
         for(int j=0;j<map.get(digits.charAt(i)).length();j++){
-            backtrack(s+map.get(digits.charAt(i)).charAt(j),ans,digits,i+1,map);
+            backtrack(s.append(map.get(digits.charAt(i)).charAt(j)),ans,digits,i+1,map);
+                s.deleteCharAt(s.length()-1);
         }
 
 
@@ -18,6 +19,6 @@ class Solution {
         map.put('7',"pqrs");
         map.put('8',"tuv");
         map.put('9',"wxyz");
-       backtrack("",ans,digits,0,map);
+       backtrack(new StringBuilder(),ans,digits,0,map);
     return ans;}
 }
