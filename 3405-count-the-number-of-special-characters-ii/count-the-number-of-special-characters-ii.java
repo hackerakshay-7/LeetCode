@@ -1,23 +1,23 @@
 class Solution {
     public int numberOfSpecialChars(String word) {
-    HashMap<Character,Integer> caps = new HashMap<>(); 
-    HashMap<Character,Integer> low = new HashMap<>();
-    int count=0;
-    for(int i =0;i<word.length();i++){
-        char c = word.charAt(i);
-        if(c>=97 && c<=123){
-           low.put(c,i);
+        int count =0;
+        int [] low = new int[26];
+        int [] high = new int[26];
+        Arrays.fill(low,-1);
+        Arrays.fill(high,-1);
+        for(int i=0;i<word.length();i++){
+            char c = word.charAt(i);
+            if(Character.isLowerCase(c)){
+                low[c-'a']=i;
+            }
+            else{
+                if(high[c-'A']==-1){
+                    high[c-'A']=i;
+                }
+            }
         }
-        else{
-            if(caps.containsKey(c)) continue;
-            caps.put(c,i);
+        for(int i =0;i<26;i++){
+            if(low[i]!=-1 && high[i]!=-1 && low[i]<high[i]) count++;
         }
-    }  
-    for(int i=0;i<26;i++){
-        char capc = (char)(i+65);
-        char lowc = (char)(i+97);
-    if(low.containsKey(lowc)
-     && caps.containsKey(capc) && (low.get(lowc) < caps.get(capc))){count++;}
-    } 
-    return count;}
+   return count; }
 }
