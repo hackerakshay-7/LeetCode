@@ -1,7 +1,7 @@
 class Solution {
     public int magicalString(int n) {
         if(n<=3) return 1;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(n+2);
         sb.append("12211");
         int i =3;
         boolean one = false;
