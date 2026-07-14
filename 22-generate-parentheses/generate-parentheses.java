@@ -1,39 +1,23 @@
-class Solution {// i think subsets se ho jYEGa with valid paranthesis 
-
-    private boolean isv(StringBuilder sb) {
-        Stack<Character> st = new Stack<>();
-        for (int i = 0; i < sb.length(); i++) {
-            if (st.isEmpty() && sb.charAt(i) == ')')
-                return false;
-            if (sb.charAt(i) == '(')
-                st.push('(');
-            if (sb.charAt(i) == ')' && st.peek() == '(')
-                st.pop();
-
-        }
-
-        return st.isEmpty();
-    }
-
-    private void df(List<String> ans, int size, StringBuilder sb) {
-
-        if (sb.length() == size) {
-            if (isv(sb))
+class Solution {
+    private void df(List<String> ans, int open ,StringBuilder sb, int close , int n) {
+        if (sb.length() == 2*n) {
                 ans.add(new StringBuilder(sb).toString());
             return;
         }
+        if(open<n){
         sb.append('(');
-        df(ans, size,sb);
-        sb.deleteCharAt(sb.length() - 1);
+        df(ans,open+1,sb,close,n);
+        sb.deleteCharAt(sb.length() - 1);}
+        if(close<open){
         sb.append(')');
-        df(ans, size,sb);
-        sb.deleteCharAt(sb.length() - 1);
+        df(ans,open,sb,close+1,n);
+        sb.deleteCharAt(sb.length() - 1);}
 
     }
 
     public List<String> generateParenthesis(int n) {
         ArrayList<String> list = new ArrayList<>();
-        df(list, 2*n, new StringBuilder());
+        df(list, 0, new StringBuilder(),0,n);
         return list;
     }
 }
