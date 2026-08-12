@@ -6,9 +6,8 @@ class Solution {
        for(int i =0;i<nums.length;i++){
             map.put(nums[i],map.getOrDefault(nums[i],0)+1);
             if(map.get(nums[i])>k){
-                while(j<nums.length && map.get(nums[i])>k){
+                while(map.get(nums[i])>k){
                     map.put(nums[j],map.getOrDefault(nums[j],0)-1);
-                    if(map.get(nums[j])==0) map.remove(nums[j]);
                     j++;
                 }
             }
