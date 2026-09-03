@@ -7,20 +7,20 @@ class Solution {
         }
         return steps;
     }
-    private int bit(int n){
-        int a =1;
-        int count =0;
-        while(a<=n){
-            if((a&n)==a) count++;
-           a= a<<1;
-        }
-        return count;
-    }
+    // private int bit(int n){
+    //     int a =1;
+    //     int count =0;
+    //     while(a<=n){
+    //         if((a&n)==a) count++;
+    //        a= a<<1;
+    //     }
+    //     return count;
+    // }
     public int minOperations(int[] nums) {
       int max = Integer.MIN_VALUE;
       int ans =0;
       for(int a : nums){
-        ans+=(bit(a));
+        ans+=(Integer.bitCount(a));
         max = Math.max(a,max);
       }
       return ans+two(max);
