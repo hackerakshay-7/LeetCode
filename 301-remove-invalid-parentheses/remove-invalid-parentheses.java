@@ -4,7 +4,7 @@ class Solution {
         if (count < 0)
             return;
         if (i == s.length() && temp.length() == max && count == 0)
-            set.add(new String(temp));
+            set.add(temp.toString());
        if (i == s.length())
             return;
         if (s.charAt(i) == '('){
